@@ -54,7 +54,7 @@ print(city_population.head())
 # TODO: Fix error on below line: ImportError: matplotlib is required for plotting. 
 #print(city_population.hist('housing_median_age'))
 
-# Accessing data from DataFrames
+#### Accessing data from DataFrames ####
 print(type(population_city_wise['City name']))
 # Get all values of column `City name`
 print(population_city_wise['City name'])
@@ -62,3 +62,19 @@ print(population_city_wise['City name'])
 print(population_city_wise['City name'][1])
 # Get values between index 0(including) to 2(not including) from column `City name`
 print(population_city_wise['City name'][0:2])
+
+
+#### Manipulating Data ####
+# Divide all elements of population series by 100
+print(population / 100)
+# Pass `pandas` `Series` object to `numpy` library's function
+import numpy as np
+print(np.log(population))
+
+# `apply` function used to apply lambda function to each value of `Series`
+print(population.apply(lambda val: val > 1000000))
+
+# Adding new key to DataFrame in assigning Series to key
+population_city_wise['Area square miles'] = pd.Series([46.87, 176.53, 97.92])
+population_city_wise['Population density'] = population_city_wise['population'] / population_city_wise['Area square miles']
+print(population_city_wise)
