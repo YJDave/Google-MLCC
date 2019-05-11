@@ -7,9 +7,15 @@ from __future__ import print_function
 # Import pandas library
 # Make sure you already have installed pandas
 import pandas as pd
+import sys
+import os
+
+# Add path to import function from generate_data.py script
+sys.path.append(os.path.dirname(os.getcwd()))
+from generate_data import generate_random_csv_data_to_file
 
 # Print installed pandas version number
-print(pd.__version__)
+print("Installed pandas version no: ", pd.__version__)
 
 # Create Series object -- single column data structure in pandas
 city_name = pd.Series(['Bhavnagar', 'Ahemdabad', 'Mumbai'])
@@ -22,8 +28,23 @@ population_city_wise = pd.DataFrame({
 						})
 # NOTE: If the Series don't match in length, missing values are filled with special NA/NaN values.
 
+# Generate random data to file
+list_of_columns = [
+	dict(
+		name='age',
+		min_value=0,
+		max_value=100,
+	),
+	dict(
+		name='annual_income',
+		min_value=0,
+		max_value=24000000,
+	),
+]
+data_file = "data.csv"
+generate_random_csv_data_to_file(list_of_columns, no_of_values=100, file_name=data_file)
 # Create DataFrames by loading entire file
-city_population = pd.read_csv("https://download.mlcc.google.com/mledu-datasets/california_housing_train.csv", sep=",")
+city_population = pd.read_csv(data_file, sep=",")
 
 # .describe function returns statistics of data
 print(city_population.describe())
