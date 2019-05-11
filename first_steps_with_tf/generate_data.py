@@ -24,24 +24,23 @@ import csv
 # no_of_value 	  : no of experimental data in each column
 # file_name 	  : file to store data into
 list_of_columns = [
-	{
-		'name': 'age',
-		'min_value': 0,
-		'max_value': 100,
-	},
-	{
-		'name': 'annual_income',
-		'min_value': 0,
-		'max_value': 24000000,
-	},
-	{
-		'name': 'weight',
-		'min_value': 1,
-		'max_value': 200,
-	},
+	dict(
+		name='age',
+		min_value=0,
+		max_value=100,
+	),
+	dict(
+		name='annual_income',
+		min_value=0,
+		max_value=24000000,
+	),
+	dict(
+		name='weight',
+		min_value=1,
+		max_value=200,
+	),
 ]
 # TODO: Allow to add list of choices and randomly allocate values from give choices
-# TODO: use dict() to declare dictionary
 
 # All coulmns will have same no of values
 no_of_values = 10
